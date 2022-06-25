@@ -3,8 +3,9 @@
 # Variables
 resourceGroup="acdnd-c4-project"
 location="westus"
+locationvm="australiacentral"
 osType="UbuntuLTS"
-vmssName="udacity-vmss"
+vmssName="vm-cloud-demo"
 adminName="udacityadmin"
 storageAccount="udacitydiag$RANDOM"
 bePoolName="$vmssName-bepool"
@@ -54,24 +55,25 @@ echo "Network security group created: $nsgName"
 # Create VM Scale Set
 echo "STEP 3 - Creating VM scale set $vmssName"
 
-az vmss create \
-  --resource-group $resourceGroup \
-  --name $vmssName \
-  --image $osType \
-  --vm-sku $vmSize \
-  --nsg $nsgName \
-  --subnet $subnetName \
-  --vnet-name $vnetName \
-  --backend-pool-name $bePoolName \
-  --storage-sku $storageType \
-  --load-balancer $lbName \
-  --custom-data cloud-init.txt \
-  --upgrade-policy-mode automatic \
-  --admin-username $adminName \
-  --generate-ssh-keys \
-  --verbose 
+# az vmss create \
+#   --resource-group $resourceGroup \
+#   --name $vmssName \
+#   --location $locationvm \
+#   --image $osType \
+#   --vm-sku $vmSize \
+#   --nsg $nsgName \
+#   --subnet $subnetName \
+#   --vnet-name $vnetName \
+#   --backend-pool-name $bePoolName \
+#   --storage-sku $storageType \
+#   --load-balancer $lbName \
+#   --custom-data cloud-init.txt \
+#   --upgrade-policy-mode automatic \
+#   --admin-username $adminName \
+#   --generate-ssh-keys \
+#   --verbose 
 
-echo "VM scale set created: $vmssName"
+# echo "VM scale set created: $vmssName"
 
 # Associate NSG with VMSS subnet
 echo "STEP 4 - Associating NSG: $nsgName with subnet: $subnetName"
