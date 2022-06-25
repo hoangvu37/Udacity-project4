@@ -7,8 +7,6 @@ import sys
 import logging
 from datetime import datetime
 
-from sqlalchemy import false
-
 # App Insights
 # TODO: Import required libraries for App Insights
 from opencensus.ext.azure.log_exporter import AzureLogHandler
